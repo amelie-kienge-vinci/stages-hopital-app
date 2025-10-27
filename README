@@ -1,0 +1,15 @@
+
+
+choix d'avoir mis les statut en attente celui par default
+uttilisation de zod pour la verif
+
+API:
+    express typscript node.js avec db posgers grace a prisma 
+
+    test d'integration rest client
+
+    docs avec swagger openAPI
+
+!!!!
+ oublie pas de mettre le port dans le .env
+!!!!

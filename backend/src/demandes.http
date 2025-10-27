@@ -1,0 +1,51 @@
+@hostname = localhost:3000
+
+### Health check
+GET http://{{hostname}}/
+
+###
+
+### Récupérer toutes les demandes
+GET http://{{hostname}}/api/demandes
+
+### Créer une nouvelle demande valide (201)
+POST http://{{hostname}}/api/demandes
+Content-Type: application/json
+
+{
+  "nom": "Dupont",
+  "prenom": "Jean",
+  "email": "jean.dupont@email.com",
+  "service": "Cardiologie",
+  "dateDebut": "2025-11-01T00:00:00.000Z",
+  "dateFin": "2025-11-30T00:00:00.000Z",
+  "motivation": "Passionné par la cardiologie depuis toujours"
+}
+
+### Créer une nouvelle demande invalide (400)
+POST http://{{hostname}}/api/demandes
+Content-Type: application/json
+
+{
+  "nom": "Elle",
+  "prenom": "Marie",
+  "email": "elle.marie@email.com",
+  "service": "Cardiologie",
+  "dateDebut": "2025-10-30T00:00:00.000Z",
+  "dateFin": "2025-11-01T00:00:00.000Z",
+  "motivation": ""
+}
+
+### Créer une nouvelle demande sans motivation (400)
+POST http://{{hostname}}/api/demandes
+Content-Type: application/json
+
+{
+  "nom": "",
+  "prenom": "Marie",
+  "email": "elle.marie@email.com",
+  "service": "Cardiologie",
+  "dateDebut": "2025-12-30T00:00:00.000Z",
+  "dateFin": "2025-11-01T00:00:00.000Z",
+  "motivation": ""
+}
