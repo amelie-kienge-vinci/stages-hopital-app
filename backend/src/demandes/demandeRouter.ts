@@ -43,4 +43,61 @@ router.get('/', demandeController.getAllDemandes);
  */
 router.post('/', demandeController.createDemande);
 
+/**
+ * @openapi
+ * /api/demandes/{id}:
+ *   get:
+ *     summary: Récupérer une demande de stage par ID
+ *     tags: [Demandes]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID de la demande
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Demande trouvée
+ *       400:
+ *         description: ID invalide
+ *       404:
+ *         description: Demande non trouvée
+ */
+router.get('/:id', demandeController.getDemandeById);
+
+/**
+ * @openapi
+ * /api/demandes/{id}/status:
+ *   patch:
+ *     summary: Mettre à jour le statut d'une demande de stage
+ *     tags: [Demandes]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID de la demande
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [statut]
+ *             properties:
+ *               statut:
+ *                 type: string
+ *                 enum: ["EN_ATTENTE", "APPROUVEE", "REFUSEE"]
+ *     responses:
+ *       200:
+ *         description: Statut mis à jour
+ *       400:
+ *         description: ID invalide ou statut invalide
+ *       404:
+ *         description: Demande non trouvée
+ */
+router.patch('/:id/status', demandeController.updateDemandeStatusController);
+
 export default router;

@@ -14,3 +14,10 @@ export const demandeSchema = z.object({
 });
 
 export type DemandeInput = z.infer<typeof demandeSchema>;
+
+
+export const demandeStatusUpdateSchema = z.object({
+  statut: z.enum(["EN_ATTENTE", "APPROUVEE", "REFUSEE"]),
+});
+
+export type DemandeStatusUpdate = z.infer<typeof demandeStatusUpdateSchema>;

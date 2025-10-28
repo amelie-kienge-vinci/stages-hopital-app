@@ -36,7 +36,7 @@ Content-Type: application/json
   "motivation": ""
 }
 
-### Créer une nouvelle demande sans motivation (400)
+### Créer une nouvelle demande sans motivation (200)
 POST http://{{hostname}}/api/demandes
 Content-Type: application/json
 
@@ -45,7 +45,25 @@ Content-Type: application/json
   "prenom": "Marie",
   "email": "elle.marie@email.com",
   "service": "Cardiologie",
-  "dateDebut": "2025-12-30T00:00:00.000Z",
-  "dateFin": "2025-11-01T00:00:00.000Z",
+  "dateDebut": "2025-10-30T00:00:00.000Z",
+  "dateFin": "2025-11-30T00:00:00.000Z",
   "motivation": ""
+}
+
+### Récupérer une demande par ID
+GET http://{{hostname}}/api/demandes/1
+
+### Mettre à jour le statut d'une demande (200)
+PATCH http://{{hostname}}/api/demandes/1/status
+Content-Type: application/json
+
+{
+  "statut": "APPROUVEE"
+}
+### Mettre à jour le statut d'une demande avec un statut invalide (400)
+PATCH http://{{hostname}}/api/demandes/1/status
+Content-Type: application/json
+
+{
+  "statut": "INVALID_STATUS"
 }
