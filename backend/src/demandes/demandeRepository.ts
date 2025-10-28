@@ -21,3 +21,10 @@ export async function updateDemandeStatus(id: number, { statut }: DemandeStatusU
     data: { statut },
   });
 }
+
+export async function getServices(){
+  return prisma.demande.findMany({
+    select: { service: true },
+    distinct: ['service']
+  }).then(rows => rows.map(r => r.service).sort());
+}

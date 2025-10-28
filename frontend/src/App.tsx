@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isHome = location.pathname === '/';
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <header style={{ padding: 12, borderBottom: '1px solid #eee', display: 'flex', alignItems: 'center' }}>
+        {!isHome && (
+          <Button type="text" icon={<ArrowLeftOutlined />} onClick={() => navigate('/') } />
+        )}
+      </header>
+      <main style={{ padding: 16 }}>
+        <Outlet />
+      </main>
+    </div>
+  );
 }
-
-export default App

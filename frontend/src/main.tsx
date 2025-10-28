@@ -1,10 +1,19 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+
+import { RouterProvider } from 'react-router-dom'
+import router from './router'
+import ConfigProvider from 'antd/es/config-provider'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ConfigProvider 
+      theme={{
+        token: {
+           
+        },
+      }}
+    ></ConfigProvider>
+    <RouterProvider router={router} />
   </StrictMode>,
 )

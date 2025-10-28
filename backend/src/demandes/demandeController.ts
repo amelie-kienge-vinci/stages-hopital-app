@@ -55,3 +55,8 @@ export async function updateDemandeStatusController(
     }
   }
 }
+
+export async function getServices(req: Request, res: Response) {
+  const services = await demandeRepository.getServices();
+  res.status(200).json(services);
+}

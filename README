@@ -13,3 +13,22 @@ API:
 !!!!
  oublie pas de mettre le port dans le .env
 !!!!
+
+pour eviter la creation dynamique de l'element service
+ (et les erreurs d'encodage/doublons) j'ai decider
+d'imposser une liste de services a selectionner dans le frontend 
+pour les utilisateurs
+
+l'autre option etant de faire une table service et de faire une relation entre demande et service
+mais puisque ce n'etait pas demandé dans le modele de donnée je suis parti sur la 1ere option
+
+
+j'ai fait uttiliser un react router classique 
+
+j'ai dedcider de filtrer directemetn dans le frontend
+
+le status "EN_ATTENTE" est le status par default a la creation d'une demande
+
+la liste des demandes est triée par date de création décroissante 
+
+

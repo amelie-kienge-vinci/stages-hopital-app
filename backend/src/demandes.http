@@ -67,3 +67,7 @@ Content-Type: application/json
 {
   "statut": "INVALID_STATUS"
 }
+
+
+### Récupérer la liste des services
+GET http://{{hostname}}/api/demandes/services

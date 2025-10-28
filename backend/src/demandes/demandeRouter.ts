@@ -16,6 +16,18 @@ router.get('/', demandeController.getAllDemandes);
 
 /**
  * @openapi
+ * /api/demandes/services:
+ *   get:
+ *     summary: Récupérer la liste des services
+ *     tags: [Demandes]
+ *     responses:
+ *       200:
+ *         description: Liste des services
+ */
+router.get('/services', demandeController.getServices);
+
+/**
+ * @openapi
  * /api/demandes:
  *   post:
  *     summary: Créer une nouvelle demande de stage
@@ -99,5 +111,6 @@ router.get('/:id', demandeController.getDemandeById);
  *         description: Demande non trouvée
  */
 router.patch('/:id/status', demandeController.updateDemandeStatusController);
+
 
 export default router;
